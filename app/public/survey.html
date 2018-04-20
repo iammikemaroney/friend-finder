@@ -13,6 +13,27 @@
   <!-- Glyphicons -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
 
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Lemon" rel="stylesheet">   
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+  
+  h6 {
+    font-family: 'Lemon', cursive;
+    font-size: 42px;
+}
+
+.jumbotron {
+    background-color: #777;
+}
+
+body {background-color: coral;}
+
+  </style>
+
 </head>
 
 <body>
@@ -173,8 +194,8 @@
           <h2 class="modal-title"><strong>Best Match</strong></h2>
         </div>
         <div class="modal-body">
-          <h2 id="match-name"></h2>
-          <img id="match-img" src="#" alt="">
+          <h2 id="matchName"></h2>
+          <img id="matchImage" width="400" src="">
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -188,14 +209,19 @@
   
   $("#submit").on("click", function () {
   
-    var friendList = {
+    var friendData = {
       name: $("#name").val(),
       photo: $("#photo").val(),
       scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
     }
-    $.post("/api/friends", friendList, function(data){
+    // post data in friend list API
+    $.post("/api/friends", friendData, function(data){
+
+      // get result from AJAX and display best match
       $("#matchName").text(data.name);
-      $('#matchImg').attr("src", data.photo);
+      $('#matchImage').attr("src", data.photo);
+
+      // show modal with the best match
       $("#results-modal").modal('toggle');
     });
   

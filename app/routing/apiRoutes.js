@@ -11,27 +11,31 @@ module.exports = function (app) {
         var scoresArray = [];
         var friendCount = 0;
         var bestMatch = 0;
+        var matchName = '';
+		var matchImage = '';
+		var totalDifference = 10000;
 
+        // total up user's score (difference)
         for (var i = 0; i < friendList.length; i++) {
-            var temp = 0;
+            var diff = 0;
             for (var j = 0; j < newFriendScores.length; j++) {
-                temp += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
+                diff += (Math.abs(parseInt(friendList[i].scores[j]) - parseInt(newFriendScores[j])));
             }
-            scoresArray.push(temp)       
-            
+            scoresArray.push(diff)
         }
-        for (var i = 0; i < scoresArray.length; i++) {
-            if (scoresArray[i] <= scoresArray[bestMatch]) {
-                bestMatch = i;
-            }
+
+        // if lowest difference, record the match
+        if (diff < totalDifference) {
+            totalDifference = diff;
+            matchName = friendList[i].name;
+            matchImage = friendList[i].photo;
         }
- 
-        //return bestMatch data
-        var bff = friendList[bestMatch];
-        res.json(bff);
- 
+
         //pushes new submission into the friendsList array
         friendList.push(newFriend);
-    });
 
+		// Send appropriate response
+        res.json({status: 'OK', matchName: matchName, matchImage: matchImage});
+        
+    });
 }
