@@ -1,10 +1,63 @@
-h6 {
+body {
+    background-image: url("http://i64.tinypic.com/swfdd2.png");
+    background-repeat: repeat;
+}
+
+h1 {
+    color: #ff7beb;
     font-family: 'Lemon', cursive;
-    font-size: 42px;
+    font-size: 72px;
+    font-weight: bold;
+    padding: 30px;
+    margin: 0px;
+    border-bottom: 10px solid;
+    border-color: #ff7beb;
+    text-shadow: 5px 5px #FFF;
+}
+
+h3 {
+    color: #FFF;
+    font-family: 'Lemon', cursive;
+    font-size: 44px;
+    font-weight: normal;
+    padding: 10px;
+    margin-top: 40px;
+    text-shadow: 1px 1px #de6bcd;
+    line-height: 20px;
+}
+
+h4 {
+    color: #de6bcd;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 10px;
+    line-height: 24px;
+}
+
+h6 {
+    color: #ff7beb;
+    font-family: 'Lemon', cursive;
+    font-size: 72px;
+    font-weight: bold;
+    padding: 10px;
+    margin: 0px;
+    border-bottom: 10px solid;
+    border-color: #ffdeff;
+    background-color: #FFF;
+    text-shadow: 5px 5px #ffdeff;
+}
+
+h2 {
+    color: #FFF;
+    font-family: 'Lemon', cursive;
+    font-size: 36px;
+    font-weight: normal;
+    padding: 30px;
+    margin: 0px;
+    text-shadow: 5px 5px #de6bcd;
+    line-height: 50px;
 }
 
 .jumbotron {
-    background-color: #777;
+    background-color: #ff7beb;
 }
-
-body {background-color: coral;}

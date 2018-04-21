@@ -19,31 +19,15 @@
   <!-- External CSS -->
   <link rel="stylesheet" href="css/style.css">
 
-  <style>
-  
-  h6 {
-    font-family: 'Lemon', cursive;
-    font-size: 42px;
-}
-
-.jumbotron {
-    background-color: #777;
-}
-
-body {background-color: coral;}
-
-  </style>
-
 </head>
 
 <body>
 
   <div class="container">
 
-    <h1>Survey Questions</h1>
-    <hr>
+    <h1 class="text-center">Survey Questions</h1>
 
-    <h3><strong>About You</strong></h3>
+    <h3 class="text-center"><strong>About You</strong></h3>
     <h4>Name (Required)</h4>
     <input type="text" id="name" class="form-control" required>
 
@@ -171,7 +155,7 @@ body {background-color: coral;}
     <br>
 
     <!-- submit button -->
-    <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
+    <button type="submit" class="btn btn-default btn-lg btn-block" id="submit"><i class="fa fa-check-circle" aria-hidden="true"></i>
      Submit</button>
 
     <hr>
@@ -191,10 +175,10 @@ body {background-color: coral;}
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h2 class="modal-title"><strong>Best Match</strong></h2>
+          <h4 class="modal-title"><strong>Best Match</strong></h4>
         </div>
         <div class="modal-body">
-          <h2 id="matchName"></h2>
+          <h4 id="matchName"></h4>
           <img id="matchImage" width="400" src="">
         </div>
         <div class="modal-footer">
@@ -209,17 +193,20 @@ body {background-color: coral;}
   
   $("#submit").on("click", function () {
   
-    var friendData = {
+    var newFriend = {
       name: $("#name").val(),
       photo: $("#photo").val(),
       scores: [$("#q1").val(), $("#q2").val(), $("#q3").val(), $("#q4").val(), $("#q5").val(), $("#q6").val(), $("#q7").val(), $("#q8").val(), $("#q9").val(), $("#q10").val()]
     }
-    // post data in friend list API
-    $.post("/api/friends", friendData, function(data){
 
-      // get result from AJAX and display best match
-      $("#matchName").text(data.name);
-      $('#matchImage').attr("src", data.photo);
+    // post data in friend list API
+    $.post("/api/friends", newFriend, function(data){
+
+    // get result from AJAX and display best match
+    $("#matchName").text(matchName);
+    $('#matchImage').attr("src", matchImage);
+
+      console.log(matchName, matchImage);
 
       // show modal with the best match
       $("#results-modal").modal('toggle');
